@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{ num }}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data : {
+                num : 10
+            },
+            computed : { //값이나 vailidation 계산 할때 주로 사용
+                doubleNum : function(){
+                    return this.num * 2;
+                }
+            },
+            watch : { //데이터 요청에 주로 사용. 매번 실행되는게 부담스러운 무거운 로직들 주로 사용
+                num : function(){
+                    this.logText();
+                }
+            },
+            methods: {
+                addNum : function(){
+                    this.num = this.num + 1;
+                },
+                logText: function(){
+                    console.log('changed');
+                }
+            }
+        })
+    </script>
+</body>
+</html>
